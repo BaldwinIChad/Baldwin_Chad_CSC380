@@ -27,13 +27,21 @@ public class Client {
 
 				Thread.sleep(500);
 				System.out.println(scan.readLine());
+				int reps = Integer.parseInt(scan.readLine());
 				
-				scan.close();
-				printer.close();
-				userInput.close();
+				for(int x = 0; x < reps; x++)
+				{
+					System.out.println(scan.readLine());
+					printer.println(userInput.nextLine());
+					printer.flush();
+				}
+				
+				Thread.sleep(500);
+				System.out.println(scan.readLine());
 				
 				isRunning = false;
 			}
+			sock.close();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
