@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<foodService>
+	<resturant name="Test">
+		<item name="TestItem" price="1"/>
+		<item name="Check123" price="123"/>
+		<item name="NEXT_ONE" price="00000000"/>
+	</resturant>
+	
+	<resturant name="McDonalds">
+		<item name="TestItem" price="1"/><item name="ChimmyCHUNGA"
+			price="99.69">
+</item>
+	</resturant>
+</foodService>
