@@ -1,6 +1,5 @@
 package Servlets;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import Resturants.FoodService;
@@ -40,10 +40,8 @@ public class ResturantObtainer extends HttpServlet {
 			InputStream is = new FileInputStream(getServletConfig().getServletContext().getRealPath("/foodService.xml"));
 			Unmarshaller um = JAXBContext.newInstance(FoodService.class).createUnmarshaller();
 			FoodService fs = (FoodService)(um.unmarshal(is));
-			for(Resturant r : fs.getResturants()){
-				response.getWriter().write(r.getName()+"\n");
-			}
-			response.getWriter().write(request.getParameter("name"));
+			Marshaller m = JAXBContext.newInstance(FoodService.class).createMarshaller();
+			m.marshal(fs, response.getOutputStream());
 		} catch(Exception e){
 		}
 		
